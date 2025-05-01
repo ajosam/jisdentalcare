@@ -14,7 +14,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full">
+    <header className="w-full p-4">
       {/* Top Bar */}
       <div className="bg-white text-sm flex justify-between items-center px-4 py-2 flex-wrap sm:flex-nowrap gap-2">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-4 text-gray-700 w-full sm:w-auto">

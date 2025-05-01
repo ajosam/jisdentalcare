@@ -1,0 +1,82 @@
+"use client";
+
+import {
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaMapMarkerAlt,
+  FaArrowRight,
+} from "react-icons/fa";
+
+export default function Hero() {
+  return (
+    <section
+      className="relative bg-cover bg-center min-h-[80vh] flex items-center justify-center px-4 sm:px-8"
+      style={{ backgroundImage: "url('/images/hero.webp')" }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30 z-0" />
+
+      {/* Content */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-7xl w-full">
+        {/* Left: Text */}
+        <div className="text-white max-w-xl space-y-6">
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
+            Best Dental Clinic in Pathanapuram
+          </h1>
+          <p className="text-lg">
+            Affordable, Gentle, and Experienced Dentists in Pathanapuram.
+            <br />
+            Book an Appointment now!
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <button className="bg-teal-700 hover:bg-teal-800 text-white px-4 py-2 rounded flex items-center gap-2">
+              <FaPhoneAlt /> Call
+            </button>
+            <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded flex items-center gap-2">
+              <FaWhatsapp /> WhatsApp
+            </button>
+            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded flex items-center gap-2">
+              <FaMapMarkerAlt /> Location
+            </button>
+          </div>
+        </div>
+
+        {/* Right: Form */}
+        <form className="bg-white p-6 sm:p-8 rounded shadow-xl w-full max-w-md space-y-4">
+          <div className="text-center">
+            <img
+              src="/logo.webp"
+              alt="Dentalis Logo"
+              className="mx-auto h-10 mb-2"
+            />
+            <h3 className="font-semibold text-lg">Book a Consultation!</h3>
+          </div>
+          <input
+            type="text"
+            placeholder="Your Name*"
+            className="border-b w-full py-2 focus:outline-none"
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number*"
+            className="border-b w-full py-2 focus:outline-none"
+            required
+          />
+          <select className="border-b w-full py-2 focus:outline-none">
+            <option>Select a service</option>
+            <option>Cleaning</option>
+            <option>Braces</option>
+            <option>Whitening</option>
+          </select>
+          <button
+            type="submit"
+            className="bg-teal-700 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2"
+          >
+            Submit <FaArrowRight />
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
