@@ -47,11 +47,11 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <Link href="/" className="hover:text-teal-600">Home</Link>
-          <Link href="/about" className="hover:text-teal-600">About Us</Link>
-          <Link href="/services" className="hover:text-teal-600">Services</Link>
-          <Link href="/contact" className="hover:text-teal-600">Contact Us</Link>
-          <Link href="/faqs" className="hover:text-teal-600">FAQS</Link>
+          <Link href="/" className="text-black hover:text-teal-600">Home</Link>
+          <Link href="/about" className="text-black hover:text-teal-600">About Us</Link>
+          <Link href="/services" className="text-black hover:text-teal-600">Services</Link>
+          <Link href="/contact" className="text-black hover:text-teal-600">Contact Us</Link>
+          <Link href="/faqs" className="text-black hover:text-teal-600">FAQS</Link>
           <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">
             Book Appointment
           </button>
@@ -68,13 +68,13 @@ export default function Header() {
       {/* Mobile Nav */}
       {menuOpen && (
         <div className="md:hidden bg-white px-4 py-2 flex flex-col gap-3 text-sm font-medium">
-          <Link href="/" className="hover:text-teal-600">Home</Link>
-          <Link href="/about" className="hover:text-teal-600">About Us</Link>
-          <Link href="/services" className="hover:text-teal-600">Services</Link>
-          <Link href="/plans" className="hover:text-teal-600">Plans</Link>
-          <Link href="/contact" className="hover:text-teal-600">Contact Us</Link>
-          <Link href="/faqs" className="hover:text-teal-600">FAQS</Link>
-          <Link href="/blogs" className="hover:text-teal-600">Blogs</Link>
+          <Link href="/" className="text-black hover:text-teal-600">Home</Link>
+          <Link href="/about" className="text-black hover:text-teal-600">About Us</Link>
+          <Link href="/services" className="text-black hover:text-teal-600">Services</Link>
+          <Link href="/plans" className="text-black hover:text-teal-600">Plans</Link>
+          <Link href="/contact" className="text-black hover:text-teal-600">Contact Us</Link>
+          <Link href="/faqs" className="text-black hover:text-teal-600">FAQS</Link>
+          <Link href="/blogs" className="text-black hover:text-teal-600">Blogs</Link>
           <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 mt-2">
             Book Appointment
           </button>

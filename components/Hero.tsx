@@ -65,29 +65,29 @@ export default function Hero() {
               alt="Dentalis Logo"
               className="mx-auto h-10 mb-2"
             />
-            <h3 className="font-semibold text-lg">Book a Consultation!</h3>
+            <h3 className="font-semibold text-lg text-black">Book a Consultation!</h3>
           </div>
-          <label className="block">
+          <label className="block text-black">
             <span className="sr-only">Your Name</span>
             <input
               type="text"
               placeholder="Your Name*"
-              className="border-b w-full py-2 focus:outline-none focus:border-teal-700"
+              className="border-b w-full py-2 focus:outline-none focus:border-teal-700 text-black placeholder:text-black"
               required
             />
           </label>
-          <label className="block">
+          <label className="block text-black">
             <span className="sr-only">Phone Number</span>
             <input
               type="tel"
               placeholder="Phone Number*"
-              className="border-b w-full py-2 focus:outline-none focus:border-teal-700"
+              className="border-b w-full py-2 focus:outline-none focus:border-teal-700 text-black placeholder:text-black"
               required
             />
           </label>
-          <label className="block">
+          <label className="block text-black">
             <span className="sr-only">Select a service</span>
-            <select className="border-b w-full py-2 focus:outline-none focus:border-teal-700">
+            <select className="border-b w-full py-2 focus:outline-none focus:border-teal-700 text-black">
               <option>Select a service</option>
               <option>Cleaning</option>
               <option>Braces</option>
