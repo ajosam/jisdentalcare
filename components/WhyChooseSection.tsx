@@ -15,8 +15,8 @@ export default function WhyChooseSection() {
             <li>We always use the best quality products from the best brands available. We believe in quality over quantity.</li>
             <li>One to one Patient-Doctor approach, we make you worry less and clear your doubts instantly.</li>
             <li>We value your time and comfort, our team of Doctors work efficiently to restore your smile back to its full glory in the shortest amount of time.</li>
-            <li>We are the best and also in your budget, so you wouldn't have to think twice.</li>
-            <li>Our doctors focus on delivering smiles in a painless manner. That is you won't feel a thing during our treatment.</li>
+            <li>We are the best and also in your budget, so you wouldn&apos;t have to think twice.</li>
+            <li>Our doctors focus on delivering smiles in a painless manner. That is you won&apos;t feel a thing during our treatment.</li>
           </ul>
         </div>
         {/* Right: Video */}

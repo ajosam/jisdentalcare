@@ -23,7 +23,7 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">Dental Services</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center">
-          {services.map((service, idx) => (
+          {services.map((service) => (
             <div
               key={service}
               className="bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col items-center p-6 w-full max-w-[200px] min-h-[180px] transition hover:shadow-lg text-center"
