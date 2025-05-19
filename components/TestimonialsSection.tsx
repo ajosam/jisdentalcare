@@ -48,6 +48,8 @@ export default function TestimonialsSection() {
     return arr;
   };
 
+  const visibleTestimonials = getVisibleTestimonials();
+
   return (
     <section className="py-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -59,7 +61,7 @@ export default function TestimonialsSection() {
         </p>
         <div className="flex flex-col items-center">
           <div className="flex gap-6 w-full justify-center mb-6">
-            {getVisibleTestimonials().map((t) => (
+            {visibleTestimonials.map((t) => (
               <div
                 key={t.name}
                 className="bg-gray-50 rounded-xl shadow p-6 flex-1 min-w-[280px] max-w-md flex flex-col relative"
@@ -84,7 +86,7 @@ export default function TestimonialsSection() {
                 {/* Review */}
                 <div className="text-gray-800 text-base mb-2">{t.review}</div>
                 {/* Carousel arrows */}
-                {t === getVisibleTestimonials()[0] && (
+                {t === visibleTestimonials[0] && (
                   <button
                     className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
                     onClick={prev}
@@ -93,7 +95,7 @@ export default function TestimonialsSection() {
                     <FaChevronLeft size={20} />
                   </button>
                 )}
-                {t === getVisibleTestimonials()[visible - 1] && (
+                {t === visibleTestimonials[visible - 1] && (
                   <button
                     className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
                     onClick={next}
