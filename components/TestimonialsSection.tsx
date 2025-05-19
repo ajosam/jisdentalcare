@@ -1,6 +1,6 @@
 /* eslint-disable */
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
@@ -32,10 +32,26 @@ const testimonials = [
   // Add more testimonials as needed
 ];
 
+function getVisibleCount() {
+  if (typeof window === "undefined") return 1;
+  if (window.innerWidth < 640) return 1; // mobile
+  if (window.innerWidth < 1024) return 2; // tablet
+  return 3; // desktop
+}
+
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
-  const visible = 3;
+  const [visible, setVisible] = useState(getVisibleCount());
   const total = testimonials.length;
+
+  useEffect(() => {
+    function handleResize() {
+      setVisible(getVisibleCount());
+    }
+    window.addEventListener("resize", handleResize);
+    setVisible(getVisibleCount());
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const prev = () => setCurrent((prev) => (prev - 1 + total) % total);
   const next = () => setCurrent((prev) => (prev + 1) % total);
@@ -61,7 +77,7 @@ export default function TestimonialsSection() {
           We have served more than 2k+ happy and satisfied patients, and hope to make many more smile along with us!
         </p>
         <div className="flex flex-col items-center">
-          <div className="flex gap-6 w-full justify-center mb-6">
+          <div className="flex flex-col sm:flex-row gap-6 w-full justify-center mb-6">
             {visibleTestimonials.map((t) => (
               <div
                 key={t.name}
@@ -87,7 +103,7 @@ export default function TestimonialsSection() {
                 {/* Review */}
                 <div className="text-gray-800 text-base mb-2">{t.review}</div>
                 {/* Carousel arrows */}
-                {t === visibleTestimonials[0] && (
+                {t === visibleTestimonials[0] && visible < total && (
                   <button
                     className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
                     onClick={prev}
@@ -96,7 +112,7 @@ export default function TestimonialsSection() {
                     <FaChevronLeft size={20} />
                   </button>
                 )}
-                {t === visibleTestimonials[visible - 1] && (
+                {t === visibleTestimonials[visible - 1] && visible < total && (
                   <button
                     className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
                     onClick={next}

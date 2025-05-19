@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <header className="w-full p-4">
       {/* Top Bar */}
-      <div className="bg-white text-sm flex justify-between items-center px-4 py-2 flex-wrap sm:flex-nowrap gap-2">
+      <div className="bg-white dark:bg-white text-sm flex justify-between items-center px-4 py-2 flex-wrap sm:flex-nowrap gap-2">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-4 text-gray-700 w-full sm:w-auto">
           <div className="flex items-center gap-1">
             <FaMapMarkerAlt className="text-teal-600" />
@@ -36,7 +36,7 @@ export default function Header() {
       </div>
 
       {/* Main Header */}
-      <div className="bg-white px-4 py-4 flex justify-between items-center">
+      <div className="bg-white dark:bg-white px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex flex-col items-center">
           <div className="text-2xl font-script text-black">JIS Dental Care</div>
