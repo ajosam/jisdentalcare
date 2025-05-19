@@ -28,7 +28,7 @@ export default function AboutSection() {
           <div>
             <h4 className="text-xl font-bold text-gray-900 mb-2">Our Patient-Focused Approach</h4>
             <p className="text-gray-700 text-base">
-              Your treatment plan will perfectly match your needs, lifestyle, and goals. Even if it's been years since you last visited the dentist, we can help. Our comfortable office, compassionate team, and minimally-invasive treatments will help you feel completely at ease.
+              Your treatment plan will perfectly match your needs, lifestyle, and goals. Even if it&apos;s been years since you last visited the dentist, we can help. Our comfortable office, compassionate team, and minimally-invasive treatments will help you feel completely at ease.
             </p>
           </div>
         </div>
