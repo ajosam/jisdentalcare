@@ -29,20 +29,36 @@ export default function Hero() {
             Book an Appointment now!
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="bg-teal-700 hover:bg-teal-800 text-white px-4 py-2 rounded flex items-center gap-2">
+            <a
+              href="tel:+911234567890"
+              className="bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white px-4 py-2 rounded flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
+              aria-label="Call the clinic"
+            >
               <FaPhoneAlt /> Call
-            </button>
-            <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded flex items-center gap-2">
+            </a>
+            <a
+              href="https://wa.me/911234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-600 hover:bg-green-700 active:bg-green-800 text-white px-4 py-2 rounded flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+              aria-label="Chat on WhatsApp"
+            >
               <FaWhatsapp /> WhatsApp
-            </button>
-            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded flex items-center gap-2">
+            </a>
+            <a
+              href="https://goo.gl/maps/placeholder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-4 py-2 rounded flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-400 transition"
+              aria-label="View location on Google Maps"
+            >
               <FaMapMarkerAlt /> Location
-            </button>
+            </a>
           </div>
         </div>
 
         {/* Right: Form */}
-        <form className="bg-white p-6 sm:p-8 rounded shadow-xl w-full max-w-md space-y-4">
+        <form className="bg-white p-6 sm:p-8 rounded shadow-xl w-full max-w-md space-y-4 mx-auto mt-8 md:mt-0">
           <div className="text-center">
             <img
               src="/logo.webp"
@@ -51,27 +67,36 @@ export default function Hero() {
             />
             <h3 className="font-semibold text-lg">Book a Consultation!</h3>
           </div>
-          <input
-            type="text"
-            placeholder="Your Name*"
-            className="border-b w-full py-2 focus:outline-none"
-            required
-          />
-          <input
-            type="tel"
-            placeholder="Phone Number*"
-            className="border-b w-full py-2 focus:outline-none"
-            required
-          />
-          <select className="border-b w-full py-2 focus:outline-none">
-            <option>Select a service</option>
-            <option>Cleaning</option>
-            <option>Braces</option>
-            <option>Whitening</option>
-          </select>
+          <label className="block">
+            <span className="sr-only">Your Name</span>
+            <input
+              type="text"
+              placeholder="Your Name*"
+              className="border-b w-full py-2 focus:outline-none focus:border-teal-700"
+              required
+            />
+          </label>
+          <label className="block">
+            <span className="sr-only">Phone Number</span>
+            <input
+              type="tel"
+              placeholder="Phone Number*"
+              className="border-b w-full py-2 focus:outline-none focus:border-teal-700"
+              required
+            />
+          </label>
+          <label className="block">
+            <span className="sr-only">Select a service</span>
+            <select className="border-b w-full py-2 focus:outline-none focus:border-teal-700">
+              <option>Select a service</option>
+              <option>Cleaning</option>
+              <option>Braces</option>
+              <option>Whitening</option>
+            </select>
+          </label>
           <button
             type="submit"
-            className="bg-teal-700 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2"
+            className="bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
           >
             Submit <FaArrowRight />
           </button>
