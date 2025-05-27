@@ -19,10 +19,10 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-12 md:py-16 px-4 sm:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">Dental Services</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 justify-items-center">
           {services.map((service) => (
             <div
               key={service}

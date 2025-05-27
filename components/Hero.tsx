@@ -10,7 +10,7 @@ import {
 export default function Hero() {
   return (
     <section
-      className="relative bg-cover bg-center min-h-[80vh] flex items-center justify-center px-4 sm:px-8"
+      className="relative bg-cover bg-center min-h-[80vh] flex items-center justify-center px-4 sm:px-8 py-10 md:py-16"
       style={{ backgroundImage: "url('/images/hero.webp')" }}
     >
       {/* Overlay */}
@@ -58,7 +58,7 @@ export default function Hero() {
         </div>
 
         {/* Right: Form */}
-        <form className="bg-white p-6 sm:p-8 rounded shadow-xl w-full max-w-md space-y-4 mx-auto mt-8 md:mt-0">
+        <form className="bg-white p-6 sm:p-8 rounded-xl shadow-xl w-full max-w-md space-y-4 mx-auto mt-8 md:mt-0">
           <div className="text-center">
             <img
               src="/logo.webp"

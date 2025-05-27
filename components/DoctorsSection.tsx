@@ -24,30 +24,22 @@ export default function DoctorsSection() {
   const nextDoctor = () => setCurrent((prev) => (prev + 1) % total);
 
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-12 md:py-16 px-4 sm:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">Meet our Doctors</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Left: Doctor Image with arrows */}
-          <div className="flex items-center justify-center relative">
-            <button
-              className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow-md z-10"
-              onClick={prevDoctor}
-              aria-label="Previous doctor"
-            >
-              <FaChevronLeft size={24} />
+          <div className="flex items-center justify-center relative min-h-[320px]">
+            <button className="absolute left-0 top-1/2 -translate-y-1/2 p-3 md:p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow-md z-10" onClick={prevDoctor} aria-label="Previous doctor">
+              <FaChevronLeft size={28} />
             </button>
             <img
               src={doctor.image}
               alt={doctor.name}
-              className="w-72 h-72 object-cover rounded-xl border shadow-md mx-auto"
+              className="w-64 h-64 object-cover rounded-xl border shadow-md mx-auto"
             />
-            <button
-              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow-md z-10"
-              onClick={nextDoctor}
-              aria-label="Next doctor"
-            >
-              <FaChevronRight size={24} />
+            <button className="absolute right-0 top-1/2 -translate-y-1/2 p-3 md:p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow-md z-10" onClick={nextDoctor} aria-label="Next doctor">
+              <FaChevronRight size={28} />
             </button>
           </div>
           {/* Right: Doctor Info */}

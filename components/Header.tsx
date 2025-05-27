@@ -15,9 +15,9 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full p-4">
+    <header className="w-full p-4 md:px-8 lg:px-16">
       {/* Top Bar */}
-      <div className="bg-white dark:bg-white text-sm flex justify-between items-center px-4 py-2 flex-wrap sm:flex-nowrap gap-2">
+      <div className="bg-white dark:bg-white text-sm flex justify-between items-center px-4 md:px-8 lg:px-16 py-2 flex-wrap sm:flex-nowrap gap-2 rounded-t-xl">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-4 text-gray-700 w-full sm:w-auto">
           <div className="flex items-center gap-1">
             <FaMapMarkerAlt className="text-teal-600" />
@@ -28,15 +28,15 @@ export default function Header() {
             <span>+91 85920 75085</span>
           </div>
         </div>
-        <div className="flex items-center gap-3 text-gray-700 text-lg ml-auto">
-          <FaFacebook />
-          <FaInstagram />
-          <FaEnvelope />
+        <div className="flex items-center gap-4 text-gray-700 text-lg ml-auto">
+          <button className="p-2 rounded-full hover:bg-gray-100 transition"><FaFacebook /></button>
+          <button className="p-2 rounded-full hover:bg-gray-100 transition"><FaInstagram /></button>
+          <button className="p-2 rounded-full hover:bg-gray-100 transition"><FaEnvelope /></button>
         </div>
       </div>
 
       {/* Main Header */}
-      <div className="bg-white dark:bg-white px-4 py-4 flex justify-between items-center">
+      <div className="bg-white dark:bg-white px-4 md:px-8 lg:px-16 py-4 flex justify-between items-center rounded-b-xl">
         {/* Logo */}
         <div className="flex flex-col items-center">
           <div className="text-2xl font-script text-black">JIS Dental Care</div>
@@ -58,16 +58,16 @@ export default function Header() {
         </nav>
 
         {/* Mobile Menu Icon */}
-        <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="p-2 rounded-full hover:bg-gray-100 transition">
+            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Nav */}
       {menuOpen && (
-        <div className="md:hidden bg-white px-4 py-2 flex flex-col gap-3 text-sm font-medium">
+        <div className="md:hidden bg-white px-4 py-2 flex flex-col gap-3 text-sm font-medium rounded-b-xl shadow-lg z-50">
           <Link href="/" className="text-black hover:text-teal-600">Home</Link>
           <Link href="/about" className="text-black hover:text-teal-600">About Us</Link>
           <Link href="/services" className="text-black hover:text-teal-600">Services</Link>

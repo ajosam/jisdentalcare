@@ -41,15 +41,17 @@ function getVisibleCount() {
 
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
-  const [visible, setVisible] = useState(getVisibleCount());
+  const [visible, setVisible] = useState(1); // Always 1 on SSR
+  const [hasMounted, setHasMounted] = useState(false);
   const total = testimonials.length;
 
   useEffect(() => {
+    setHasMounted(true);
     function handleResize() {
       setVisible(getVisibleCount());
     }
-    window.addEventListener("resize", handleResize);
     setVisible(getVisibleCount());
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -59,7 +61,8 @@ export default function TestimonialsSection() {
   // For a simple carousel, rotate the array
   const getVisibleTestimonials = () => {
     const arr = [];
-    for (let i = 0; i < visible; i++) {
+    const count = hasMounted ? visible : 1;
+    for (let i = 0; i < count; i++) {
       arr.push(testimonials[(current + i) % total]);
     }
     return arr;
@@ -68,7 +71,7 @@ export default function TestimonialsSection() {
   const visibleTestimonials = getVisibleTestimonials();
 
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-12 md:py-16 px-4 sm:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-2">
           Testimonials - Hear From Our Patients:
@@ -102,28 +105,49 @@ export default function TestimonialsSection() {
                 </div>
                 {/* Review */}
                 <div className="text-gray-800 text-base mb-2">{t.review}</div>
-                {/* Carousel arrows */}
-                {t === visibleTestimonials[0] && visible < total && (
-                  <button
-                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
-                    onClick={prev}
-                    aria-label="Previous testimonial"
-                  >
-                    <FaChevronLeft size={20} />
-                  </button>
-                )}
-                {t === visibleTestimonials[visible - 1] && visible < total && (
-                  <button
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
-                    onClick={next}
-                    aria-label="Next testimonial"
-                  >
-                    <FaChevronRight size={20} />
-                  </button>
-                )}
+                {/* Carousel arrows for desktop/tablet only */}
+                <div className="hidden sm:block">
+                  {hasMounted && t === visibleTestimonials[0] && visible < total && (
+                    <button
+                      className="absolute left-2 top-1/2 -translate-y-1/2 p-3 md:p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
+                      onClick={prev}
+                      aria-label="Previous testimonial"
+                    >
+                      <FaChevronLeft size={28} />
+                    </button>
+                  )}
+                  {hasMounted && t === visibleTestimonials[visible - 1] && visible < total && (
+                    <button
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-3 md:p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
+                      onClick={next}
+                      aria-label="Next testimonial"
+                    >
+                      <FaChevronRight size={28} />
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
+          {/* Carousel arrows for mobile only */}
+          {hasMounted && visible < total && (
+            <div className="flex sm:hidden gap-4 mb-4">
+              <button
+                className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow"
+                onClick={prev}
+                aria-label="Previous testimonial"
+              >
+                <FaChevronLeft size={28} />
+              </button>
+              <button
+                className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow"
+                onClick={next}
+                aria-label="Next testimonial"
+              >
+                <FaChevronRight size={28} />
+              </button>
+            </div>
+          )}
           {/* Dots */}
           <div className="flex gap-1 mb-6">
             {testimonials.map((_, i) => (

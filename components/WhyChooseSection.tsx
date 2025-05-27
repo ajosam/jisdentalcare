@@ -2,8 +2,8 @@ import React from "react";
 
 export default function WhyChooseSection() {
   return (
-    <section className="bg-gray-50 py-16 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="bg-gray-50 py-12 md:py-16 px-4 sm:px-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Left: Text */}
         <div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center md:text-left mb-4">Why Choose Dentalis?</h2>

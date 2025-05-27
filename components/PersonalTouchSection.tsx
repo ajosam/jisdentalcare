@@ -16,18 +16,18 @@ const WhiteCheckIcon = () => (
 
 export default function PersonalTouchSection() {
   return (
-    <section className="w-full">
+    <section className="w-full py-12 md:py-16 px-4 sm:px-8">
       <div className="flex flex-col md:flex-row w-full min-h-[350px]">
         {/* Left: Image */}
         <div className="md:w-1/2 w-full h-64 md:h-auto">
           <img
             src="/images/hero.webp"
             alt="Dentalis Reception"
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full rounded-t-xl md:rounded-t-none md:rounded-l-xl"
           />
         </div>
         {/* Right: Content */}
-        <div className="md:w-1/2 w-full bg-teal-700 flex flex-col justify-center p-8 md:p-16 text-white">
+        <div className="md:w-1/2 w-full bg-teal-700 flex flex-col justify-center p-8 md:p-16 text-white rounded-b-xl md:rounded-b-none md:rounded-r-xl">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8">Dental Care with a Personal Touch</h2>
           <ul className="space-y-6 text-lg">
             <li className="flex items-center gap-4">
