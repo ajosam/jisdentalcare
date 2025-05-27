@@ -1,6 +1,8 @@
 /* eslint-disable */
 "use client";
 import React, { useState, useEffect } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
@@ -32,43 +34,31 @@ const testimonials = [
   // Add more testimonials as needed
 ];
 
-function getVisibleCount() {
-  if (typeof window === "undefined") return 1;
-  if (window.innerWidth < 640) return 1; // mobile
-  if (window.innerWidth < 1024) return 2; // tablet
-  return 3; // desktop
-}
-
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
-  const [visible, setVisible] = useState(1); // Always 1 on SSR
   const [hasMounted, setHasMounted] = useState(false);
-  const total = testimonials.length;
+
+  // Responsive breakpoints for keen-slider
+  const [sliderRef, instanceRef] = useKeenSlider({
+    initial: 0,
+    slideChanged(s) {
+      setCurrent(s.track.details.rel);
+    },
+    breakpoints: {
+      "(min-width: 1024px)": {
+        slides: { perView: 3, spacing: 24 },
+      },
+      "(min-width: 640px)": {
+        slides: { perView: 2, spacing: 24 },
+      },
+    },
+    slides: { perView: 1, spacing: 16 },
+    loop: true,
+  });
 
   useEffect(() => {
     setHasMounted(true);
-    function handleResize() {
-      setVisible(getVisibleCount());
-    }
-    setVisible(getVisibleCount());
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const prev = () => setCurrent((prev) => (prev - 1 + total) % total);
-  const next = () => setCurrent((prev) => (prev + 1) % total);
-
-  // For a simple carousel, rotate the array
-  const getVisibleTestimonials = () => {
-    const arr = [];
-    const count = hasMounted ? visible : 1;
-    for (let i = 0; i < count; i++) {
-      arr.push(testimonials[(current + i) % total]);
-    }
-    return arr;
-  };
-
-  const visibleTestimonials = getVisibleTestimonials();
 
   return (
     <section className="py-12 md:py-16 px-4 sm:px-8 bg-white">
@@ -80,68 +70,49 @@ export default function TestimonialsSection() {
           We have served more than 2k+ happy and satisfied patients, and hope to make many more smile along with us!
         </p>
         <div className="flex flex-col items-center">
-          <div className="flex flex-col sm:flex-row gap-6 w-full justify-center mb-6">
-            {visibleTestimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-gray-50 rounded-xl shadow p-6 flex-1 min-w-[280px] max-w-md flex flex-col relative"
-              >
-                {/* Avatar and Name */}
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-purple-400 flex items-center justify-center text-white font-bold text-xl">
-                    {t.avatar}
+          <div className="w-full mb-6">
+            <div ref={sliderRef} className="keen-slider">
+              {testimonials.map((t, idx) => (
+                <div
+                  key={t.name}
+                  className="keen-slider__slide bg-gray-50 rounded-xl shadow p-6 flex flex-col relative min-w-[280px] max-w-md mx-auto"
+                >
+                  {/* Avatar and Name */}
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-full bg-purple-400 flex items-center justify-center text-white font-bold text-xl">
+                      {t.avatar}
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-900">{t.name}</div>
+                      <div className="text-xs text-gray-500">{t.time}</div>
+                    </div>
+                    <FcGoogle className="ml-auto text-2xl" />
                   </div>
-                  <div>
-                    <div className="font-bold text-gray-900">{t.name}</div>
-                    <div className="text-xs text-gray-500">{t.time}</div>
+                  {/* Stars */}
+                  <div className="flex items-center mb-2">
+                    {[...Array(t.rating)].map((_, i) => (
+                      <FaStar key={i} className="text-yellow-400 mr-1" />
+                    ))}
                   </div>
-                  <FcGoogle className="ml-auto text-2xl" />
+                  {/* Review */}
+                  <div className="text-gray-800 text-base mb-2">{t.review}</div>
                 </div>
-                {/* Stars */}
-                <div className="flex items-center mb-2">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <FaStar key={i} className="text-yellow-400 mr-1" />
-                  ))}
-                </div>
-                {/* Review */}
-                <div className="text-gray-800 text-base mb-2">{t.review}</div>
-                {/* Carousel arrows for desktop/tablet only */}
-                <div className="hidden sm:block">
-                  {hasMounted && t === visibleTestimonials[0] && visible < total && (
-                    <button
-                      className="absolute left-2 top-1/2 -translate-y-1/2 p-3 md:p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
-                      onClick={prev}
-                      aria-label="Previous testimonial"
-                    >
-                      <FaChevronLeft size={28} />
-                    </button>
-                  )}
-                  {hasMounted && t === visibleTestimonials[visible - 1] && visible < total && (
-                    <button
-                      className="absolute right-2 top-1/2 -translate-y-1/2 p-3 md:p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow z-10"
-                      onClick={next}
-                      aria-label="Next testimonial"
-                    >
-                      <FaChevronRight size={28} />
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-          {/* Carousel arrows for mobile only */}
-          {hasMounted && visible < total && (
-            <div className="flex sm:hidden gap-4 mb-4">
+          {/* Carousel arrows */}
+          {hasMounted && (
+            <div className="flex gap-4 mb-4">
               <button
                 className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow"
-                onClick={prev}
+                onClick={() => instanceRef.current?.prev()}
                 aria-label="Previous testimonial"
               >
                 <FaChevronLeft size={28} />
               </button>
               <button
                 className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-teal-700 shadow"
-                onClick={next}
+                onClick={() => instanceRef.current?.next()}
                 aria-label="Next testimonial"
               >
                 <FaChevronRight size={28} />
