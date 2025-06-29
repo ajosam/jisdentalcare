@@ -73,10 +73,8 @@ export default function Header() {
           <Link href="/" className="text-black hover:text-teal-600">Home</Link>
           <Link href="/about" className="text-black hover:text-teal-600">About Us</Link>
           <Link href="/services" className="text-black hover:text-teal-600">Services</Link>
-          <Link href="/plans" className="text-black hover:text-teal-600">Plans</Link>
           <Link href="/contact" className="text-black hover:text-teal-600">Contact Us</Link>
           <Link href="/faqs" className="text-black hover:text-teal-600">FAQS</Link>
-          <Link href="/blogs" className="text-black hover:text-teal-600">Blogs</Link>
           <Link href="/contact">
             <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 mt-2">
               Book Appointment
